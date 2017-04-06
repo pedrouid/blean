@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import logo from './logo.svg';
@@ -19,7 +21,7 @@ const StyledAppHeader = styled.div`
 `;
 
 const StyledAppLogo = styled.img`
-  animation: App-logo-spin infinite 20s linear;
+  animation: ${appLogoSpin} infinite 20s linear;
   height: 80px;
 `;
 
