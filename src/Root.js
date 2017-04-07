@@ -1,22 +1,23 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
-import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
+import ReduxThunk from 'redux-thunk';
+import ReduxReset from './libraries/redux-reset';
 import reducers from './redux';
 import Router from './Router';
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
 
-// Add the reducer to your store on the `router` key
-// Also apply our middleware for navigating
 const store = createStore(
-  combineReducers({
-    ...reducers,
-    router: routerReducer
-  }),
-  applyMiddleware(middleware)
+  reducers,
+  composeWithDevTools(
+    applyMiddleware(ReduxThunk),
+    applyMiddleware(routerMiddleware(history)),
+    ReduxReset()
+  )
 );
 
 const Root = () => (
