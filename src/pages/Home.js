@@ -1,50 +1,21 @@
-// @flow
-
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
-import logo from '../assets/logo.svg';
-
-const appLogoSpin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
+import styled from 'styled-components';
 
 const StyledApp = styled.div`
   text-align: center;
+  height: 200px;
+  padding: 50px;
 `;
 
-const StyledAppHeader = styled.div`
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-`;
-
-const StyledAppLogo = styled.img`
-  animation: ${appLogoSpin} infinite 20s linear;
-  height: 80px;
-`;
-
-const StyledAppIntro = styled.p`
-  font-size: large;
-`;
+const user = 'Pedro';
 
 class Home extends Component {
   render() {
     return (
       <StyledApp>
-        <StyledAppHeader>
-          <StyledAppLogo src={logo} alt="logo" />
-          <h2>Welcome to Blean</h2>
-        </StyledAppHeader>
-        <StyledAppIntro className="App-intro">
-          To get started, login with your details below
-        </StyledAppIntro>
-        <input type="email" />
-        <input type="passoword" />
+        <h2>{`Congratulations ${user}, you're logged in!`}</h2>
       </StyledApp>
     );
   }
 }
-
 export default Home;

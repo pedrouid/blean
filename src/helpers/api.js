@@ -3,7 +3,7 @@ import axios from 'axios';
 import { refreshSession } from './utilities';
 
 /**
- * Configuration for loot api instance
+ * Configuration for api instance
  * @type axios instance
  */
 const apiRequest = axios.create({
@@ -25,7 +25,7 @@ const apiRequest = axios.create({
 });
 
 /**
- * @desc http://docs.lootv2.apiary.io/#reference/sessions/sign-in/sign-in-action
+ * @desc validate and login user session
  * @param  {String} [email='']
  * @param  {String} [password='']
  * @return {Promise}

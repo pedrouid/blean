@@ -21,7 +21,7 @@ export const setSession = (
     accounts,
     public_id: publicID
   };
-  localStorage.setItem('LOOT_SESSION', JSON.stringify(session));
+  localStorage.setItem('BLEAN_SESSION', JSON.stringify(session));
 };
 
 /**
@@ -29,7 +29,7 @@ export const setSession = (
  * @return {Object}
  */
 export const getSession = () => {
-  const session = localStorage.getItem('LOOT_SESSION');
+  const session = localStorage.getItem('BLEAN_SESSION');
   return JSON.parse(session);
 };
 
@@ -64,7 +64,7 @@ export const refreshSession = () => {
   };
 
   if (auth) {
-    localStorage.setItem('LOOT_SESSION', getRefreshedSession(auth, 300000)); // 5 min
+    localStorage.setItem('BLEAN_SESSION', getRefreshedSession(auth, 300000)); // 5 min
     return refreshTimeout(240000); // 4 min
   }
 };

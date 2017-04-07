@@ -10,10 +10,10 @@ const LOGIN_UPDATE_PASSWORD = 'login/LOGIN_UPDATE_PASSWORD';
 
 // -- Actions --------------------------------------------------------------- //
 
-export const login = (email = '', passowrd = '') =>
+export const loginAuth = (email = '', password = '') =>
   (dispatch) => {
     dispatch({ type: LOGIN_REQUEST });
-    apiLoginUser(email, passowrd)
+    apiLoginUser(email, password)
     .then(({ data }) => {
       dispatch({
         type: LOGIN_SUCCESS,
