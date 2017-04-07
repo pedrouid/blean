@@ -14,9 +14,7 @@ const history = createHistory();
 const store = createStore(
   reducers,
   composeWithDevTools(
-    applyMiddleware(ReduxThunk),
-    applyMiddleware(routerMiddleware(history)),
-    ReduxReset()
+    applyMiddleware(ReduxThunk, routerMiddleware(history), ReduxReset())
   )
 );
 
