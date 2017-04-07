@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
-import logo from './logo.svg';
+import logo from '../assets/logo.svg';
 
 const appLogoSpin = keyframes`
   from { transform: rotate(0deg); }
@@ -29,7 +29,7 @@ const StyledAppIntro = styled.p`
   font-size: large;
 `;
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
       <StyledApp>
@@ -45,4 +45,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;
