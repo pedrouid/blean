@@ -1,17 +1,15 @@
 import React from 'react';
-import { Route, Miss } from 'react-router';
-import Login from './pages/Login';
-import Home from './pages/Home';
+import { Route, Switch } from 'react-router-dom';
+import Base from './layouts/Base';
+import Dashboard from './layouts/Dashboard';
 import NotFound from './pages/NotFound';
 
 const Router = () => (
-  <div>
-    <Route exact path="/" component={Login} />
-
-    <Route exact path="/dashboard" component={Home} />
-
-    <Miss component={NotFound} />
-  </div>
+  <Switch>
+    <Route exact path={'/:route'} component={Base} />
+    <Route path={'/dashboard'} component={Dashboard} />
+    <Route component={NotFound} />
+  </Switch>
 );
 
 export default Router;
