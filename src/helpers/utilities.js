@@ -1,7 +1,3 @@
-import ClientJS from 'clientjs';
-import inbound from 'inbound';
-
-
 /**
  * @desc create authenticated user session
  * @param  {String} [email='']
@@ -80,34 +76,4 @@ export const refreshSession = () => {
 export const isMobile = () => {
   if ('ontouchstart' in window && Math.max(document.documentElement.clientWidth, window.innerWidth || 0) <= 800) return true;
   return false;
-};
-
-/**
- * @desc get user properties to send of in analytics api header
- * @type {base64}
- */
-const client = new ClientJS();
-export const userProperties = () => {
-  let referrer = {};
-  inbound.referrer.parse(window.location.href, document.referrer, (error, description) => {
-    if (!error) referrer = description;
-  });
-  let richData = {
-    $browser: client.getBrowser().name,
-    $browser_version: client.getBrowser().version,
-    $device: client.getDevice().model,
-    $current_url: window.location.href,
-    $initial_referrer: document.referrer,
-    $initial_referring_domain: document.referrer.split('/')[2],
-    $os: `${client.getOS().name} ${client.getOS().version}`,
-    $referrer: document.referrer,
-    $referring_domain: document.referrer.split('/')[2],
-    $screen_height: window.innerHeight,
-    $screen_width: window.innerWidth,
-    $search_engine: referrer.type === 'search' ? referrer.engine : '',
-    $mp_keyword: referrer.type === 'search' ? referrer.query : ''
-  };
-  richData = JSON.stringify(richData);
-  const richDataBase64 = new Buffer(richData).toString('base64');
-  return richDataBase64;
 };

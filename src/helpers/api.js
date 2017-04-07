@@ -1,6 +1,6 @@
 /* eslint camelcase: 0 */
 import axios from 'axios';
-import { refreshSession, userProperties } from './utilities';
+import { refreshSession } from './utilities';
 
 /**
  * Configuration for loot api instance
@@ -12,8 +12,7 @@ const apiRequest = axios.create({
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    platform: 'web',
-    'Analytics-Data': userProperties()
+    platform: 'web'
   },
   transformResponse: [(data) => {
     refreshSession();

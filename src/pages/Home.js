@@ -35,11 +35,13 @@ class Home extends Component {
       <StyledApp>
         <StyledAppHeader>
           <StyledAppLogo src={logo} alt="logo" />
-          <h2>Welcome to React</h2>
+          <h2>Welcome to Blean</h2>
         </StyledAppHeader>
         <StyledAppIntro className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          To get started, login with your details below
         </StyledAppIntro>
+        <input type="email" />
+        <input type="passoword" />
       </StyledApp>
     );
   }
