@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Route, Switch, Link } from 'react-router-dom';
 import Welcome from './Welcome';
 import Login from './Login';
 import Signup from './Signup';
 import NotFound from './NotFound';
+import FadeIn from '../components/FadeIn';
 import Column from '../components/Column';
 import logo from '../assets/logo.svg';
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const StyledWrapper = styled.div`
+const StyledWrapper = styled(FadeIn)`
   height: 100vh;
   text-align: center;
-  will-change: transform, opacity;
-  animation: 0.5s ease 0s normal 1 ${fadeIn};
 `;
 
-const StyledContainer = styled.div`
+const StyledContainer = styled(FadeIn)`
   display: flex;
   justify-content: center;
   align-items: center;
