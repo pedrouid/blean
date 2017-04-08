@@ -2,6 +2,7 @@
   "name": "blean",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://gomesphoto.github.io/blean",
   "dependencies": {
     "axios": "^0.16.0",
     "firebase": "^3.7.5",
