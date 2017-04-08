@@ -2,19 +2,18 @@
  * @desc create authenticated user session
  * @param  {String} [email='']
  * @param  {Date} [expires=Date.now()]
- * @param  {String} [intercomHash='']
- * @param  {Array} accounts
+ * @param  {Array} profile
  * @return {Session}
  */
 export const setSession = (
   email = '',
   expires = Date.now(),
-  account: [],
+  profile: [],
   ) => {
   const session = {
     email,
     expires,
-    account
+    profile
   };
   localStorage.setItem('BLEAN_SESSION', JSON.stringify(session));
 };
@@ -29,12 +28,12 @@ export const getSession = () => {
 };
 
 /**
- * @desc update accounts in session
- * @param  {Array}  [accounts=[]]
+ * @desc update profile in session
+ * @param  {Array}  [profile=[]]
  * @return {Session}
  */
-export const updateAccounts = (accounts = []) => {
-  const newSession = { ...getSession(), accounts };
+export const updateProfile = (profile = []) => {
+  const newSession = { ...getSession(), profile };
   return localStorage.setItem('BLEAN_SESSION', JSON.stringify(newSession));
 };
 
@@ -45,6 +44,16 @@ export const updateAccounts = (accounts = []) => {
  */
 export const deleteSession = () => {
   localStorage.removeItem('BLEAN_SESSION');
+};
+
+/**
+ * @desc get session status
+ * @return {String}
+ */
+export const getSessionStatus = () => {
+  const auth = getSession();
+  if (auth && auth.expires > Date.now()) return 'LOGIN';
+  return 'LOGOUT';
 };
 
 /**
@@ -65,8 +74,6 @@ export const clearSessionExpireWarning = () => {
  * @desc create onboarding user session
  * @param {String} [email='']
  * @param {Date} [expires=Date.now()]
- * @param {String} [lastFinishedStep='']
- * @param {String} [intercomHash='']
  * @return {Void}
  */
 export const setOnboardingSession = (
@@ -88,32 +95,12 @@ export const getOnboardingSession = () => {
   return JSON.parse(onboardingSession);
 };
 
-
 /**
  * @desc delete session
  * @return {Void}
  */
 export const deleteOnboardingSession = () => {
   localStorage.removeItem('BLEAN_ONBOARDING_SESSION');
-};
-
-
-/**
- * @desc return users open/pending account
- * @return {Object} [description]
- */
-export const getAccount = () => {
-  const accounts = getSession().accounts;
-  const openAccounts = accounts.filter(account =>
-    account.status === 'open'
-  );
-  if (!openAccounts[0]) {
-    const pendingAccounts = accounts.filter(account =>
-      account.status === 'pending'
-    );
-    return pendingAccounts[0];
-  }
-  return openAccounts[0];
 };
 
 /**

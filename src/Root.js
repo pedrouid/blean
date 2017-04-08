@@ -8,6 +8,7 @@ import ReduxReset from './libraries/redux-reset';
 import reducers from './redux';
 import Pages from './pages';
 import Dashboard from './dashboard';
+import { getSessionStatus } from './helpers/utilities';
 
 const store = createStore(reducers,
   composeWithDevTools(applyMiddleware(ReduxThunk), ReduxReset())
@@ -18,8 +19,24 @@ const Root = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" render={() => <Redirect to="/get-started" />} />
-        <Route exact path={'/:route'} component={Pages} />
-        <Route exact path={'/dashboard/:route'} component={Dashboard} />
+        <Route
+          exact
+          path="/:route"
+          render={(routerProps) => {
+            if (getSessionStatus() === 'LOGIN') return (<Redirect to="/dashboard/home" />);
+            if (getSessionStatus() === 'LOGOUT') return (<Redirect to="/logout" />);
+            return (<Pages {...routerProps} />);
+          }}
+        />
+
+        <Route
+          exact
+          path="/dashboard/:route"
+          render={(routerProps) => {
+            if (getSessionStatus() === 'LOGOUT') return (<Redirect to="/logout" />);
+            return (<Dashboard {...routerProps} />);
+          }}
+        />
       </Switch>
     </BrowserRouter>
   </Provider>

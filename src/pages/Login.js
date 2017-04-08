@@ -5,7 +5,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import Page from '../components/Page';
 import Form from '../components/Form';
-import { loginAuth, loginUpdateEmail, loginUpdatePassword } from '../redux/_login';
+import { authenticationLogin, authenticationUpdateEmail, authenticationUpdatePassword } from '../redux/_authentication';
 
 const StyledForm = styled(Form)`
   border: 1px solid white;
@@ -18,7 +18,7 @@ const StyledForm = styled(Form)`
 
 class Login extends Component {
   onSubmit = () => {
-    this.props.loginAuth(this.props.email, this.props.password);
+    this.props.authenticationLogin(this.props.email, this.props.password);
   }
   render() {
     return (
@@ -35,7 +35,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginAuth: PropTypes.func.isRequired,
+  authenticationLogin: PropTypes.func.isRequired,
   loginUpdateEmail: PropTypes.func.isRequired,
   loginUpdatePassword: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
@@ -43,10 +43,14 @@ Login.propTypes = {
   password: PropTypes.string.isRequired
 };
 
-const reduxProps = ({ login }) => ({
-  fetching: login.fetching,
-  email: login.email,
-  password: login.password
+const reduxProps = ({ authentication }) => ({
+  fetching: authentication.fetching,
+  email: authentication.email,
+  password: authentication.password
 });
 
-export default connect(reduxProps, { loginAuth, loginUpdateEmail, loginUpdatePassword })(Login);
+export default connect(reduxProps, {
+  authenticationLogin,
+  authenticationUpdateEmail,
+  authenticationUpdatePassword
+})(Login);

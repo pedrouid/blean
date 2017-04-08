@@ -33,6 +33,9 @@ class Pages extends Component {
   state = {
     logo: true
   }
+  componentDidMount() {
+    window.rogueDispatch = this.context.store.dispatch;
+  }
   toggleLogo = (bool) => {
     this.setState({ logo: bool });
   }
