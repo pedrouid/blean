@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { colors } from '../styles';
-import Login from '../pages/Login';
+import styled from 'styled-components';
+import Welcome from '../pages/Welcome';
+import Column from '../components/Column';
 import logo from '../assets/logo.svg';
 
-const appLogoSpin = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-`;
-
 const StyledContainer = styled.div`
-  height: 100%;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledBase = styled.div`
   height: 100vh;
   text-align: center;
-  background-color: rgb(${colors.dark});
-  color: rgb(${colors.white});
 `;
 
 const StyledHeader = styled.div`
@@ -29,7 +21,6 @@ const StyledHeader = styled.div`
 `;
 
 const StyledAppLogo = styled.img`
-  animation: ${appLogoSpin} infinite 20s linear;
   height: 80px;
 `;
 
@@ -37,13 +28,14 @@ class Base extends Component {
   render() {
     return (
       <StyledBase>
-        <StyledHeader>
-          <StyledAppLogo src={logo} alt="logo" />
-          <h1>{'BLEAN'}</h1>
-        </StyledHeader>
-        <StyledContainer>
-          <Login />
-        </StyledContainer>
+        <Column>
+          <StyledHeader>
+            <StyledAppLogo src={logo} alt="logo" />
+          </StyledHeader>
+          <StyledContainer>
+            <Welcome />
+          </StyledContainer>
+        </Column>
       </StyledBase>
     );
   }

@@ -25,7 +25,7 @@ class Login extends Component {
         <h4> {'To get started, login with your details below'} </h4>
         <Input placeholder="email" type="email" onChange={({ target }) => this.props.loginUpdateEmail(target.value)} />
         <Input placeholder="password" type="password" onChange={({ target }) => this.props.loginUpdatePassword(target.value)} />
-        <Button type="submit" disabled={this.props.fetching}>{'Login'}</Button>
+        <Button type="submit" text="Login" fetching={this.props.fetching} />
       </StyledForm>
     );
   }

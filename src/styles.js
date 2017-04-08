@@ -1,10 +1,12 @@
+import background from './assets/background.png';
+
 export const colors = {
   white: '255, 255, 255',
   black: '0, 0, 0',
   dark: '34, 34, 34',
   lightGrey: '235, 235, 235',
   darkGrey: '84, 84, 84',
-  blue: '77, 183, 195',
+  blue: '102, 173, 221',
   gold: '246, 203, 71',
   green: '79, 180, 128',
   red: '221, 69, 65'
@@ -57,36 +59,27 @@ export const responsive = {
 
 export const globalStyles = `
   @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
+    font-family: 'Avenir Next';
+    font-weight: 800;
+    src: local('AvenirNext-Heavy');
+  }
+
+  @font-face {
+    font-family: 'Avenir Next';
     font-weight: 600;
-    src: local('Open Sans Semibold'), local('OpenSans-Semibold'),
-    url(https://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNShampu5_7CjHW5spxoeN3Vs.woff2)
-    format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
-    U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    src: local('AvenirNext-DemiBold');
   }
 
   @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
+    font-family: 'Avenir Next';
     font-weight: 400;
-    src: local('Open Sans'), local('OpenSans'),
-    url(https://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2)
-    format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
-    U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    src: local('AvenirNext-Regular');
   }
 
   @font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: local('Open Sans Light'), local('OpenSans-Light'),
-    url(https://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTRampu5_7CjHW5spxoeN3Vs.woff2)
-    format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC,
-    U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    font-family: 'Avenir Next';
+    font-weight: 200;
+    src: local('AvenirNext-UltraLight');
   }
 
   html, body, #root, #router-root {
@@ -96,8 +89,14 @@ export const globalStyles = `
   }
 
   body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: ${fonts.base};
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: url(${background});
+    background-color: rgb(${colors.white});
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: 400;
+    font-size: ${fonts.medium};
     color: rgb(${colors.dark});
     position: relative;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

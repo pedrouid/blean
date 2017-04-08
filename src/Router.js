@@ -6,8 +6,8 @@ import NotFound from './pages/NotFound';
 
 const Router = () => (
   <Switch>
-    <Route exact path={'/:route'} component={Base} />
-    <Route path={'/dashboard'} component={Dashboard} />
+    <Route exact path={'/'} component={Base} />
+    <Route exact path={'/dashboard'} component={Dashboard} />
     <Route component={NotFound} />
   </Switch>
 );
