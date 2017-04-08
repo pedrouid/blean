@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import { colors, fonts, transitions } from '../styles';
-import Loader from '../components/Loader';
 
 const StyledButton = styled.button`
   transition: ${transitions.base};
@@ -13,10 +12,11 @@ const StyledButton = styled.button`
   color: ${({ line }) => line ? `rgb(${colors.blue})` : `rgb(${colors.white})`};
   font-size: ${fonts.medium};
   border-radius: 23px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 10px;
   margin: 5px;
   width: 150px;
+  height: 36px;
   cursor: pointer;
   will-change: transform;
   &:hover {
@@ -24,21 +24,19 @@ const StyledButton = styled.button`
   }
 `;
 
-const Button = ({ text, fetching, line, ...otherProps }) => (
+const Button = ({ text, line, ...otherProps }) => (
   <StyledButton line={line} {...otherProps}>
-    {fetching ? <Loader /> : text}
+    {text}
   </StyledButton>
 );
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  line: PropTypes.bool,
-  fetching: PropTypes.bool
+  line: PropTypes.bool
 };
 
 Button.defaultProps = {
-  line: false,
-  fetching: false
+  line: false
 };
 
 export default Button;

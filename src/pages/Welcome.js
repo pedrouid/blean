@@ -11,7 +11,8 @@ const StyledApp = styled.div`
 const StyledIntro = styled.h1`
   font-size: ${fonts.h1};
   color: rgb(${colors.blue});
-  font-weight: 400;
+  font-weight: inherit;
+  margin: 30px 0;
 `;
 
 const Welcome = () => (

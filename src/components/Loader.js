@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
+import { colors } from '../styles';
 
 const load = keyframes`
   0% {
@@ -15,18 +16,18 @@ const StyledLoader = styled.div`
   font-size: 10px;
   margin: 50px auto;
   text-indent: -9999em;
-  width: 11em;
-  height: 11em;
+  width: 8em;
+  height: 8em;
   border-radius: 50%;
-  background: #ffffff;
-  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: rgb(${colors.blue});
+  background: linear-gradient(to right, rgb(${colors.blue}) 10%, rgba(255, 255, 255, 0) 42%);
   animation: ${load} 1.4s infinite linear;
   transform: translateZ(0);
 
   &:before {
     width: 50%;
     height: 50%;
-    background: #ffffff;
+    background: rgb(${colors.blue});
     border-radius: 100% 0 0 0;
     position: absolute;
     top: 0;
@@ -35,7 +36,7 @@ const StyledLoader = styled.div`
   }
 
   &:after {
-    background: #66addd;
+    background: rgb(${colors.white});
     width: 75%;
     height: 75%;
     border-radius: 50%;

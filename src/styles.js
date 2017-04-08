@@ -58,41 +58,7 @@ export const responsive = {
 };
 
 export const globalStyles = `
-  @font-face {
-    font-family: 'Avenir Next';
-    font-weight: 800;
-    src:  local(Avenir Next Heavy), local(AvenirNext-Heavy),
-          url('/assets/fonts/AvenirNext-Heavy.woff2') format('woff2'),
-          url('/assets/fonts/AvenirNext-Heavy.woff') format('woff');,
-          url('/assets/fonts/AvenirNext-Heavy.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Avenir Next';
-    font-weight: 600;
-    src:  local(Avenir Next Demi Bold), local(AvenirNext-DemiBold),
-          url('/assets/fonts/AvenirNext-DemiBold.woff2') format('woff2'),
-          url('/assets/fonts/AvenirNext-DemiBold.woff') format('woff');,
-          url('/assets/fonts/AvenirNext-DemiBold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Avenir Next';
-    font-weight: 400;
-    src:  local(Avenir Next Regular), local(AvenirNext-Regular),
-          url('/assets/fonts/AvenirNext-Regular.woff2') format('woff2'),
-          url('/assets/fonts/AvenirNext-Regular.woff') format('woff');,
-          url('/assets/fonts/AvenirNext-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Avenir Next';
-    font-weight: 200;
-    src:  local(Avenir Next Ultra Light), local(AvenirNext-UltraLight),
-          url('/assets/fonts/AvenirNext-UltraLight.woff2') format('woff2'),
-          url('/assets/fonts/AvenirNext-UltraLight.woff') format('woff');,
-          url('/assets/fonts/AvenirNext-UltraLight.ttf') format('truetype');
-  }
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 
   html, body, #root, #router-root {
     height: 100%;
@@ -106,8 +72,8 @@ export const globalStyles = `
     background-size: cover;
     background-image: url(${background});
     background-color: rgb(${colors.white});
-    font-family: 'Avenir Next', sans-serif;
-    font-weight: 400;
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
     font-size: ${fonts.medium};
     color: rgb(${colors.dark});
     position: relative;
@@ -128,6 +94,11 @@ export const globalStyles = `
   [tabindex] {
     outline: none;
     height: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 
   div {

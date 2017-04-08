@@ -113,8 +113,7 @@ module.exports = {
           /\.(js|jsx)(\?.*)?$/,
           /\.css$/,
           /\.json$/,
-          /\.svg$/,
-          /fonts\/.*\.(woff|woff2|eot|ttf)$/
+          /\.svg$/
         ],
         loader: 'url',
         query: {
@@ -157,11 +156,6 @@ module.exports = {
         query: {
           name: 'static/media/[name].[hash:8].[ext]'
         }
-      },
-      ,
-      {
-        test: /fonts\/.*\.(woff|woff2|eot|ttf)$/,
-        loader: 'file-loader?name="[name]-[hash].[ext]"',
       }
       // ** STOP ** Are you adding a new loader?
       // Remember to add the new extension(s) to the "url" loader exclusion list.

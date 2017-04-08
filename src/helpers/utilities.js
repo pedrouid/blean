@@ -9,17 +9,12 @@
 export const setSession = (
   email = '',
   expires = Date.now(),
-  maxAge = Date.now(),
-  intercomHash = '',
-  accounts: [],
-  publicID: '') => {
+  account: [],
+  ) => {
   const session = {
     email,
     expires,
-    maxAge,
-    intercom_hash: intercomHash,
-    accounts,
-    public_id: publicID
+    account
   };
   localStorage.setItem('BLEAN_SESSION', JSON.stringify(session));
 };
@@ -31,6 +26,25 @@ export const setSession = (
 export const getSession = () => {
   const session = localStorage.getItem('BLEAN_SESSION');
   return JSON.parse(session);
+};
+
+/**
+ * @desc update accounts in session
+ * @param  {Array}  [accounts=[]]
+ * @return {Session}
+ */
+export const updateAccounts = (accounts = []) => {
+  const newSession = { ...getSession(), accounts };
+  return localStorage.setItem('BLEAN_SESSION', JSON.stringify(newSession));
+};
+
+
+/**
+ * @desc delete session
+ * @return {Void}
+ */
+export const deleteSession = () => {
+  localStorage.removeItem('BLEAN_SESSION');
 };
 
 /**
@@ -47,6 +61,60 @@ export const clearSessionExpireWarning = () => {
   clearTimeout(timeout);
 };
 
+/**
+ * @desc create onboarding user session
+ * @param {String} [email='']
+ * @param {Date} [expires=Date.now()]
+ * @param {String} [lastFinishedStep='']
+ * @param {String} [intercomHash='']
+ * @return {Void}
+ */
+export const setOnboardingSession = (
+  email = '',
+  expires = Date.now(),
+) => {
+  localStorage.setItem('BLEAN_ONBOARDING_SESSION', JSON.stringify({
+    email,
+    expires,
+  }));
+};
+
+/**
+ * @desc get session as an object
+ * @return {Object}
+ */
+export const getOnboardingSession = () => {
+  const onboardingSession = localStorage.getItem('BLEAN_ONBOARDING_SESSION');
+  return JSON.parse(onboardingSession);
+};
+
+
+/**
+ * @desc delete session
+ * @return {Void}
+ */
+export const deleteOnboardingSession = () => {
+  localStorage.removeItem('BLEAN_ONBOARDING_SESSION');
+};
+
+
+/**
+ * @desc return users open/pending account
+ * @return {Object} [description]
+ */
+export const getAccount = () => {
+  const accounts = getSession().accounts;
+  const openAccounts = accounts.filter(account =>
+    account.status === 'open'
+  );
+  if (!openAccounts[0]) {
+    const pendingAccounts = accounts.filter(account =>
+      account.status === 'pending'
+    );
+    return pendingAccounts[0];
+  }
+  return openAccounts[0];
+};
 
 /**
  * @desc refresh sesion tokens

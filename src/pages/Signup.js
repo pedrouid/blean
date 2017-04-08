@@ -5,7 +5,7 @@ import Input from '../components/Input';
 import Button from '../components/Button';
 import Page from '../components/Page';
 import Form from '../components/Form';
-import { loginAuth, loginUpdateEmail, loginUpdatePassword } from '../redux/_login';
+import { signupAuth, signupUpdateEmail, signupUpdatePassword } from '../redux/_signup';
 
 const StyledForm = styled(Form)`
   border: 1px solid white;
@@ -16,17 +16,17 @@ const StyledForm = styled(Form)`
   border-radius: 10px;
 `;
 
-class Login extends Component {
+class Signup extends Component {
   onSubmit = () => {
-    this.props.loginAuth(this.props.email, this.props.password);
+    this.props.signupAuth(this.props.email, this.props.password);
   }
   render() {
     return (
       <Page fetching={this.props.fetching}>
         <h4> {'To get started, signup with your details below'} </h4>
         <StyledForm onSubmit={this.onSubmit}>
-          <Input label="Email" type="email" onValueChange={value => this.props.loginUpdateEmail(value)} />
-          <Input label="Password" type="password" onValueChange={value => this.props.loginUpdatePassword(value)} />
+          <Input label="Email" type="email" onValueChange={value => this.props.signupUpdateEmail(value)} />
+          <Input label="Password" type="password" onValueChange={value => this.props.signupUpdatePassword(value)} />
           <Button type="submit" text="Signup" fetching={this.props.fetching} />
         </StyledForm>
       </Page>
@@ -34,19 +34,19 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  loginAuth: PropTypes.func.isRequired,
-  loginUpdateEmail: PropTypes.func.isRequired,
-  loginUpdatePassword: PropTypes.func.isRequired,
+Signup.propTypes = {
+  signupAuth: PropTypes.func.isRequired,
+  signupUpdateEmail: PropTypes.func.isRequired,
+  signupUpdatePassword: PropTypes.func.isRequired,
   fetching: PropTypes.bool.isRequired,
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired
 };
 
-const reduxProps = ({ login }) => ({
-  fetching: login.fetching,
-  email: login.email,
-  password: login.password
+const reduxProps = ({ signup }) => ({
+  fetching: signup.fetching,
+  email: signup.email,
+  password: signup.password
 });
 
-export default connect(reduxProps, { loginAuth, loginUpdateEmail, loginUpdatePassword })(Login);
+export default connect(reduxProps, { signupAuth, signupUpdateEmail, signupUpdatePassword })(Signup);

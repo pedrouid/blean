@@ -1,29 +1,17 @@
 import React, { PropTypes } from 'react';
-import styled, { keyframes } from 'styled-components';
+import Loader from '../components/Loader';
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const StyledPage = styled.div`
-  height: 100vh;
-  text-align: center;
-  will-change: transform, opacity;
-  animation: 0.5s ease 0s normal 1 ${fadeIn};
-`;
-const Page = ({ children }) => (
-  <StyledPage>
-    {children}
-  </StyledPage>
+const Wrapper = ({ children, fetching }) => (
+  <div>{fetching ? <Loader /> : children} </div>
 );
 
-Page.propTypes = {
-  children: PropTypes.node.isRequired
+Wrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  fetching: PropTypes.bool
 };
 
-export default Page;
+Wrapper.defaultProps = {
+  fetching: false
+};
+
+export default Wrapper;

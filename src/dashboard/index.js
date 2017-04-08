@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Welcome from '../pages/Welcome';
 import Page from '../components/Page';
 import Column from '../components/Column';
 import logo from '../assets/logo.svg';
+import { getAccount } from '../helpers/utilities';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -19,7 +19,7 @@ const StyledAppLogo = styled.img`
   height: 70px;
 `;
 
-class Base extends Component {
+class Dashboard extends Component {
   render() {
     return (
       <Page>
@@ -28,7 +28,7 @@ class Base extends Component {
             <StyledAppLogo src={logo} alt="Blean" />
           </StyledHeader>
           <StyledContainer>
-            <Welcome />
+            {`Congratulations, You're Logged in ${getAccount().name}`}
           </StyledContainer>
         </Column>
       </Page>
@@ -36,4 +36,4 @@ class Base extends Component {
   }
 }
 
-export default Base;
+export default Dashboard;
