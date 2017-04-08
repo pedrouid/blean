@@ -1,9 +1,19 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import Form from '../components/Form';
 import { loginAuth, loginUpdateEmail, loginUpdatePassword } from '../redux/_login';
+
+const StyledForm = styled(Form)`
+  border: 1px solid white;
+  margin-top: 60px;
+  padding: 25px;
+  margin: 60px auto 0;
+  box-sizing: border-box;
+  border-radius: 10px;
+`;
 
 class Login extends Component {
   onSubmit = () => {
@@ -11,12 +21,12 @@ class Login extends Component {
   }
   render() {
     return (
-      <Form onSubmit={this.onSubmit}>
+      <StyledForm onSubmit={this.onSubmit}>
         <h4> {'To get started, login with your details below'} </h4>
-        <Input type="email" onChange={({ target }) => this.props.loginUpdateEmail(target.value)} />
-        <Input type="password" onChange={({ target }) => this.props.loginUpdatePassword(target.value)} />
+        <Input placeholder="email" type="email" onChange={({ target }) => this.props.loginUpdateEmail(target.value)} />
+        <Input placeholder="password" type="password" onChange={({ target }) => this.props.loginUpdatePassword(target.value)} />
         <Button type="submit" disabled={this.props.fetching}>{'Login'}</Button>
-      </Form>
+      </StyledForm>
     );
   }
 }
