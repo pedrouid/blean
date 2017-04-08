@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Welcome from '../pages/Welcome';
+import Page from '../components/Page';
 import Column from '../components/Column';
 import logo from '../assets/logo.svg';
 
@@ -10,33 +11,27 @@ const StyledContainer = styled.div`
   align-items: center;
 `;
 
-const StyledBase = styled.div`
-  height: 100vh;
-  text-align: center;
-`;
-
 const StyledHeader = styled.div`
-  height: 150px;
-  padding: 20px;
+  padding: 10px;
 `;
 
 const StyledAppLogo = styled.img`
-  height: 80px;
+  height: 70px;
 `;
 
 class Base extends Component {
   render() {
     return (
-      <StyledBase>
+      <Page>
         <Column>
           <StyledHeader>
-            <StyledAppLogo src={logo} alt="logo" />
+            <StyledAppLogo src={logo} alt="Blean" />
           </StyledHeader>
           <StyledContainer>
             <Welcome />
           </StyledContainer>
         </Column>
-      </StyledBase>
+      </Page>
     );
   }
 }

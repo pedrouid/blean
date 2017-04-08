@@ -61,25 +61,37 @@ export const globalStyles = `
   @font-face {
     font-family: 'Avenir Next';
     font-weight: 800;
-    src: local('AvenirNext-Heavy');
+    src:  local(Avenir Next Heavy), local(AvenirNext-Heavy),
+          url('/assets/fonts/AvenirNext-Heavy.woff2') format('woff2'),
+          url('/assets/fonts/AvenirNext-Heavy.woff') format('woff');,
+          url('/assets/fonts/AvenirNext-Heavy.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'Avenir Next';
     font-weight: 600;
-    src: local('AvenirNext-DemiBold');
+    src:  local(Avenir Next Demi Bold), local(AvenirNext-DemiBold),
+          url('/assets/fonts/AvenirNext-DemiBold.woff2') format('woff2'),
+          url('/assets/fonts/AvenirNext-DemiBold.woff') format('woff');,
+          url('/assets/fonts/AvenirNext-DemiBold.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'Avenir Next';
     font-weight: 400;
-    src: local('AvenirNext-Regular');
+    src:  local(Avenir Next Regular), local(AvenirNext-Regular),
+          url('/assets/fonts/AvenirNext-Regular.woff2') format('woff2'),
+          url('/assets/fonts/AvenirNext-Regular.woff') format('woff');,
+          url('/assets/fonts/AvenirNext-Regular.ttf') format('truetype');
   }
 
   @font-face {
     font-family: 'Avenir Next';
     font-weight: 200;
-    src: local('AvenirNext-UltraLight');
+    src:  local(Avenir Next Ultra Light), local(AvenirNext-UltraLight),
+          url('/assets/fonts/AvenirNext-UltraLight.woff2') format('woff2'),
+          url('/assets/fonts/AvenirNext-UltraLight.woff') format('woff');,
+          url('/assets/fonts/AvenirNext-UltraLight.ttf') format('truetype');
   }
 
   html, body, #root, #router-root {
@@ -102,6 +114,15 @@ export const globalStyles = `
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  button:active,
+  button:focus,
+  button.active {
+    background-image: none;
+    outline: 0;
+    -webkit-box-shadow: none;
+            box-shadow: none;
   }
 
   [tabindex] {

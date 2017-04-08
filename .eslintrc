@@ -2,6 +2,7 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb",
+    "react-app",
     "plugin:flowtype/recommended"
   ],
   "plugins": [
@@ -17,7 +18,7 @@
     "comma-dangle": 0,
     "class-methods-use-this": 0,
     "no-param-reassign": 0,
-    "no-console": ["error", { allow: ["error"] }],
+    "no-console": 0,
     "no-return-assign": 0,
     "global-require": 0,
     "new-cap": 0,

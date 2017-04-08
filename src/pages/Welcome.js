@@ -1,26 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { colors } from '../styles';
+import { Link } from 'react-router-dom';
+import { colors, fonts } from '../styles';
 import Button from '../components/Button';
 
 const StyledApp = styled.div`
   text-align: center;
-  height: 200px;
 `;
 
-const StyledIntro = styled.h4`
+const StyledIntro = styled.h1`
+  font-size: ${fonts.h1};
   color: rgb(${colors.blue});
+  font-weight: 400;
 `;
 
-class Welcome extends Component {
-  render() {
-    return (
-      <StyledApp>
-        <StyledIntro>{'Be in charge of your fitness'}</StyledIntro>
-        <Button text="Login" onClick={this.onLogin} />
-        <Button text="Signup" onClick={this.onSignup} />
-      </StyledApp>
-    );
-  }
-}
+const Welcome = () => (
+  <StyledApp>
+    <StyledIntro>{'Be in charge of your fitness'}</StyledIntro>
+    <Link to="/login"><Button text="Login" /></Link>
+    <Link to="/signup"><Button line text="Signup" /></Link>
+  </StyledApp>
+);
+
 export default Welcome;
