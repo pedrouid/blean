@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import { asyncComponent } from 'react-async-component';
 import styled, { keyframes } from 'styled-components';
 import { colors } from '../styles';
+import Login from '../pages/Login';
 import logo from '../assets/logo.svg';
 
 const appLogoSpin = keyframes`
@@ -11,8 +10,10 @@ const appLogoSpin = keyframes`
 `;
 
 const StyledContainer = styled.div`
+  height: 100%;
   width: 100%;
   max-width: 400px;
+  margin: 0 auto;
 `;
 
 const StyledBase = styled.div`
@@ -32,10 +33,6 @@ const StyledAppLogo = styled.img`
   height: 80px;
 `;
 
-const asyncLogin = asyncComponent({
-  resolve: () => System.import('../pages/Login')
-});
-
 class Base extends Component {
   render() {
     return (
@@ -45,13 +42,7 @@ class Base extends Component {
           <h1>{'BLEAN'}</h1>
         </StyledHeader>
         <StyledContainer>
-          <Switch>
-            <Route
-              exact
-              path={'/login'}
-              render={() => (<asyncLogin />)}
-            />
-          </Switch>
+          <Login />
         </StyledContainer>
       </StyledBase>
     );

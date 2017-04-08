@@ -1,12 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
+import Input from '../components/Input';
+import Button from '../components/Button';
+import Form from '../components/Form';
 import { loginAuth, loginUpdateEmail, loginUpdatePassword } from '../redux/_login';
-import { fonts } from '../styles';
-
-const StyledIntro = styled.p`
-  font-size: ${fonts.h4};
-`;
 
 class Login extends Component {
   onSubmit = () => {
@@ -14,14 +11,12 @@ class Login extends Component {
   }
   render() {
     return (
-      <div>
-        <form onSubmit={this.onSubmit}>
-          <StyledIntro> {'To get started, login with your details below'} </StyledIntro>
-          <input type="email" onChange={({ target }) => this.props.loginUpdateEmail(target.value)} />
-          <input type="password" onChange={({ target }) => this.props.loginUpdatePassword(target.value)} />
-          <button type="submit" disabled={this.props.fetching} />
-        </form>
-      </div>
+      <Form onSubmit={this.onSubmit}>
+        <h4> {'To get started, login with your details below'} </h4>
+        <Input type="email" onChange={({ target }) => this.props.loginUpdateEmail(target.value)} />
+        <Input type="password" onChange={({ target }) => this.props.loginUpdatePassword(target.value)} />
+        <Button type="submit" disabled={this.props.fetching}>{'Login'}</Button>
+      </Form>
     );
   }
 }
