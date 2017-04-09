@@ -16,6 +16,7 @@ export const authenticationLogin = (email, password) =>
     dispatch({ type: AUTHENTICATION_REQUEST });
     apiLogin(email, password)
     .then(({ data: profilesData }) => {
+      console.log('profilesData', profilesData);
       setSession(
         profilesData.email,
         Date.now() + 300000, // 5 minutes
@@ -38,6 +39,7 @@ export const authenticationLogout = () =>
     dispatch({ type: AUTHENTICATION_SIGNOUT_REQUEST });
     apiLogout()
     .then(() => {
+      console.log('apiLogout Promise');
       deleteSession();
       dispatch({ type: AUTHENTICATION_SIGNOUT_SUCCESS });
       window.router.transitionTo('/login');

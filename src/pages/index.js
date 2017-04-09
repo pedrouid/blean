@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Route, Switch, Link } from 'react-router-dom';
 import Welcome from './Welcome';
 import Login from './Login';
+import Logout from './Logout';
 import Signup from './Signup';
 import NotFound from './NotFound';
 import FadeIn from '../components/FadeIn';
@@ -33,7 +34,7 @@ class Pages extends Component {
   state = {
     logo: true
   }
-  componentDidMount() {
+  componentWillMount() {
     window.rogueDispatch = this.context.store.dispatch;
   }
   toggleLogo = (bool) => {
@@ -50,6 +51,7 @@ class Pages extends Component {
             <Switch>
               <Route exact path={'/get-started'} component={Welcome} />
               <Route exact path={'/login'} component={Login} />
+              <Route exact path={'/logout'} component={Logout} />
               <Route exact path={'/signup'} component={Signup} />
               <Route
                 render={routerProps => (

@@ -1,6 +1,6 @@
 /* eslint camelcase: 0 */
 import axios from 'axios';
-import { refreshSession } from './utilities';
+import { defaultAuth as auth } from './firebase';
 
 /**
  * Configuration for api instance
@@ -13,15 +13,7 @@ const apiRequest = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
     platform: 'web'
-  },
-  transformResponse: [(data) => {
-    refreshSession();
-    try {
-      return JSON.parse(data);
-    } catch (e) {
-      return data;
-    }
-  }]
+  }
 });
 
 /**
@@ -31,12 +23,27 @@ const apiRequest = axios.create({
  * @return {Promise}
  */
 export const apiLogin = (email = '', password = '') =>
-  apiRequest.post('/sessions', { email, password });
-
+  auth.signInWithEmailAndPassword(email, password);
 
 /**
- * @desc delete authenticated user session
+ * @desc create user auth
+ * @param  {String} [email='']
+ * @param  {String} [password='']
+ * @return {Promise}
+ */
+export const apiSignup = (email = '', password = '') =>
+  auth.createUserWithEmailAndPassword(email, password);
+
+/**
+ * @desc signout authenticated user session
  * @return {Promise}
  */
 export const apiLogout = () =>
-  apiRequest.delete('/sessions');
+  auth.signOut();
+
+/**
+ * @desc find foods from mynetdiary database
+ * @return {Promise}
+ */
+export const apiDatabaseSearch = () =>
+  apiRequest.findFoods();
