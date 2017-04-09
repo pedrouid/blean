@@ -16,7 +16,6 @@ export const authenticationLogin = (email, password) =>
     dispatch({ type: AUTHENTICATION_REQUEST });
     apiLogin(email, password)
     .then(({ data: profilesData }) => {
-      console.log('profilesData', profilesData);
       setSession(
         profilesData.email,
         Date.now() + 300000, // 5 minutes
