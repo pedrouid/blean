@@ -38,7 +38,6 @@ export const authenticationLogout = () =>
     dispatch({ type: AUTHENTICATION_SIGNOUT_REQUEST });
     apiLogout()
     .then(() => {
-      console.log('apiLogout Promise');
       deleteSession();
       dispatch({ type: AUTHENTICATION_SIGNOUT_SUCCESS });
       window.router.transitionTo('/login');

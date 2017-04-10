@@ -23,7 +23,6 @@ const Root = () => (
           exact
           path="/:route"
           render={(routerProps) => {
-            console.log('routerProps', routerProps);
             const path = routerProps.location.pathname;
             if (getSessionStatus() === 'LOGIN' && path !== '/logout') return (<Redirect to="/dashboard/home" />);
             if (getSessionStatus() === 'LOGOUT' && path !== '/logout') return (<Redirect to="/logout" />);
